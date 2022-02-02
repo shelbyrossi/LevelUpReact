@@ -2,8 +2,9 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
 
+
 export const NavBar = () => {
-    const history = useHistory()
+ 
     return (
         <ul className="navbar">
             <li className="navbar__item">
