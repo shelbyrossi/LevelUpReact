@@ -116,16 +116,17 @@ code {
 
 /* Button 2 */
 .btn-2 {
-	background: #2ecc71;
+	background: goldenrod;
 	color: #fff;
+	border: 1px solid rgb(229, 211, 93);
 }
 
 .btn-2:hover {
-	background: #27ae60;
+	background: goldenrod;
 }
 
 .btn-2:active {
-	background: #27ae60;
+	background: goldenrod;
 	top: 2px;
 }
 
@@ -166,16 +167,16 @@ code {
 
 /* Button 3 */
 .btn-4 {
-	background: #34495e;
+	background: goldenrod;
 	color: #fff;
 }
 
 .btn-4:hover {
-	background: #2c3e50;
+	background: goldenrod;
 }
 
 .btn-4:active {
-	background: #2c3e50;
+	background: goldenrod;
 	top: 2px;
 }
 
@@ -193,4 +194,13 @@ code {
 
 .icon-send:before {
 	content: "🔓";
+}
+
+.game {
+	padding: 30px;
+}
+
+.game__title {
+	font-size: 150%;
+	color: goldenrod;
 }
