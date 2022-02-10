@@ -1,32 +1,59 @@
 import React, { useEffect, useState } from "react"
-import { getEvents } from "./EventManager.js"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
+import { deleteEvent, getEvents, joinEvent, leaveEvent } from "./EventManager.js"
 
 export const EventList = (props) => {
-    const [events, setEvents] = useState([])
+  const [events, setEvents] = useState([])
+  const history = useHistory()
 
-    useEffect(() => {
-        getEvents().then(data => setEvents(data))
-    }, [])
+  const getAllTheEvents = () => getEvents().then(data => setEvents(data))
 
-    const history = useHistory()
+  useEffect(() => {
+    getAllTheEvents()
+  }, [])
 
-    return (
+  return (
+    <><center>
+      <button className="btn btn-2 btn-sep icon-create"
+        onClick={() => {
+          history.push({ pathname: "/events/new" })
+        }}
+      >Register New Event</button>
+      {
         events.map((event) => {
-            return (
-                <section><center>
-                    <h1>{event.game.title}</h1>
+          return (
+            <section>
+              <div><h1>{event.game.title}</h1>
 
-                    <div>{event.description}
-                    {event.date} at {event.time}</div>
-
-                    <button className="btn btn-2 btn-sep icon-create"
-                        onClick={() => {
-                            history.push({ pathname: "/events/new" })
-                        }}
-                    >Register New Event</button>
-                </center></section>
-            )
+              {event.description}
+              {event.date} at {event.time}</div>
+              <Link className="btn" to={`/events/${event.id}/update`}>Edit Event</Link>
+              <button className="btn" onClick={() => {
+                deleteEvent(event.id).then(getAllTheEvents)
+              }}>Destroy Event</button>
+              {
+                event.joined
+                ?
+                // Leave button
+                <button className="btn" onClick={() => {
+                  leaveEvent(event.id).then(getAllTheEvents)
+                }}>
+                  Leave Event
+                </button>
+                :
+                // join button
+                <button className="btn" onClick={() => {
+                  joinEvent(event.id).then(getAllTheEvents)
+                }}>
+                  Join Event
+                </button>
+        }
+        
+            </section>
+          )
         })
-    )
+    }
+    </center>
+    </>
+  )
 }

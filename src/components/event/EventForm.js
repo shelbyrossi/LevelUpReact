@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react"
 import { useHistory } from 'react-router-dom'
 import { getGames } from "../game/GameManager.js"
-import { createEvents, getEvents } from './EventManager.js'
+import { createEvent, getEvents } from './EventManager.js'
 
 
 export const EventForm = () => {
@@ -94,7 +94,7 @@ export const EventForm = () => {
                     }
 
                     // Send POST request to your API
-                    createEvents(event)
+                    createEvent(event)
                         .then(() => history.push("/events"))
                 }}
                 className="btn btn-primary">Create</button>

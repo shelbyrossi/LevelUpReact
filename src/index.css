@@ -46,9 +46,9 @@ code {
 	color: inherit;
 	background: none;
 	cursor: pointer;
-	padding: 25px 80px;
+	padding: 12px 12px;
 	display: inline-block;
-	margin: 15px 30px;
+	margin: 12px 12px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 700;
@@ -82,7 +82,7 @@ code {
 
 /* Icon separator */
 .btn-sep {
-	padding: 25px 60px 25px 120px;
+	padding: 12px 12px 12px 12px;
 }
 
 .btn-sep:before {
